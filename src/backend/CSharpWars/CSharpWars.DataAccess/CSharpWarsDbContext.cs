@@ -17,11 +17,6 @@ namespace CSharpWars.DataAccess
 
         public DbSet<BotScript> BotScripts { get; set; }
 
-
-        public CSharpWarsDbContext()
-        {
-            
-        }
         
         public CSharpWarsDbContext(IConfigurationHelper configurationHelper)
         {
@@ -30,16 +25,14 @@ namespace CSharpWars.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //if (string.IsNullOrEmpty(_configurationHelper.ConnectionString))
-            //{
-            //    optionsBuilder.UseInMemoryDatabase($"{Guid.NewGuid()}");
-            //}
-            //else
-            //{
-            //    optionsBuilder.UseSqlServer(_configurationHelper.ConnectionString);
-            //}
-
-            optionsBuilder.UseSqlServer("Server=my.djohnnie.be;Database=CSharpWarsCodeMash;User Id=sa;Password=Pr0gN3T!;");
+            if (string.IsNullOrEmpty(_configurationHelper.ConnectionString))
+            {
+                optionsBuilder.UseInMemoryDatabase($"{Guid.NewGuid()}");
+            }
+            else
+            {
+                optionsBuilder.UseSqlServer(_configurationHelper.ConnectionString);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
