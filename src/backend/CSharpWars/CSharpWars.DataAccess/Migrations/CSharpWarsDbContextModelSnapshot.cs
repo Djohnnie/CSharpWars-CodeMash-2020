@@ -83,30 +83,6 @@ namespace CSharpWars.DataAccess.Migrations
                     b.ToTable("BOTS");
                 });
 
-            modelBuilder.Entity("CSharpWars.Model.Message", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BotName");
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("DateTime");
-
-                    b.Property<int>("SysId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.HasKey("Id")
-                        .HasAnnotation("SqlServer:Clustered", false);
-
-                    b.HasIndex("SysId")
-                        .HasAnnotation("SqlServer:Clustered", true);
-
-                    b.ToTable("MESSAGES");
-                });
-
             modelBuilder.Entity("CSharpWars.Model.Player", b =>
                 {
                     b.Property<Guid>("Id")

@@ -13,7 +13,6 @@ namespace CSharpWars.Processor.Middleware
 
         public ArenaDto Arena { get; private set; }
         public IList<BotDto> Bots { get; private set; }
-        public IList<MessageToCreateDto> Messages { get; private set; }
 
         private ProcessingContext() { }
 
@@ -22,8 +21,7 @@ namespace CSharpWars.Processor.Middleware
             return new ProcessingContext
             {
                 Arena = arena,
-                Bots = bots,
-                Messages = new List<MessageToCreateDto>()
+                Bots = bots
             };
         }
 
@@ -52,19 +50,6 @@ namespace CSharpWars.Processor.Middleware
 
             var botPropertiesToUpdate = _botProperties.Values.Single(x => x.BotId == bot.Id);
             botPropertiesToUpdate.Update(bot);
-        }
-
-        public void UpdateMessages(BotDto bot, BotProperties botProperties)
-        {
-            foreach (var message in botProperties.Messages)
-            {
-                Messages.Add(new MessageToCreateDto
-                {
-                    BotName = bot.Name,
-                    Content = message,
-                    DateTime = DateTime.UtcNow
-                });
-            }
         }
     }
 }

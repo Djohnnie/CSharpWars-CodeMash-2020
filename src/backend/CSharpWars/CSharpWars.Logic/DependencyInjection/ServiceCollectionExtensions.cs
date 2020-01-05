@@ -16,8 +16,6 @@ namespace CSharpWars.Logic.DependencyInjection
             serviceCollection.AddTransient<IArenaLogic, ArenaLogic>();
             serviceCollection.AddTransient<IPlayerLogic, PlayerLogic>();
             serviceCollection.AddTransient<IBotLogic, BotLogic>();
-            serviceCollection.AddTransient<IDangerLogic, DangerLogic>();
-            serviceCollection.AddTransient<IMessageLogic, MessageLogic>();
         }
     }
 }

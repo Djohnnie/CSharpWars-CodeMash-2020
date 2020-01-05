@@ -17,7 +17,11 @@ namespace CSharpWars.DataAccess
 
         public DbSet<BotScript> BotScripts { get; set; }
 
-        public DbSet<Message> Messages { get; set; }
+
+        public CSharpWarsDbContext()
+        {
+            
+        }
 
         public CSharpWarsDbContext(IConfigurationHelper configurationHelper)
         {
@@ -26,14 +30,15 @@ namespace CSharpWars.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (String.IsNullOrEmpty(_configurationHelper.ConnectionString))
-            {
-                optionsBuilder.UseInMemoryDatabase($"{Guid.NewGuid()}");
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer(_configurationHelper.ConnectionString);
-            }
+            //if (String.IsNullOrEmpty(_configurationHelper.ConnectionString))
+            //{
+            //    optionsBuilder.UseInMemoryDatabase($"{Guid.NewGuid()}");
+            //}
+            //else
+            //{
+            //    optionsBuilder.UseSqlServer(_configurationHelper.ConnectionString);
+            //}
+            optionsBuilder.UseSqlServer("Server=my.djohnnie.be;Database=CSharpWarsCodeMash;User Id=sa;Password=Pr0gN3T!;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,13 +62,6 @@ namespace CSharpWars.DataAccess
             {
                 e.ToTable("BOTS").HasKey(x => x.Id).ForSqlServerIsClustered(false);
                 e.HasOne<Bot>().WithOne().HasForeignKey<BotScript>(x => x.Id);
-            });
-
-            modelBuilder.Entity<Message>(e =>
-            {
-                e.ToTable("MESSAGES").HasKey(x => x.Id).ForSqlServerIsClustered(false);
-                e.Property<Int32>("SysId").UseSqlServerIdentityColumn();
-                e.HasIndex("SysId").ForSqlServerIsClustered();
             });
         }
     }

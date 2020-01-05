@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CSharpWars.DataAccess.Migrations
 {
-    [ExcludeFromCodeCoverage]
-    partial class InitialMigration : Migration
+    public partial class Initial_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +16,7 @@ namespace CSharpWars.DataAccess.Migrations
                     Name = table.Column<string>(nullable: true),
                     Salt = table.Column<string>(nullable: true),
                     Hashed = table.Column<string>(nullable: true),
+                    LastDeployment = table.Column<DateTime>(nullable: false),
                     SysId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
                 },
@@ -44,6 +43,7 @@ namespace CSharpWars.DataAccess.Migrations
                     CurrentStamina = table.Column<int>(nullable: false),
                     Memory = table.Column<string>(nullable: true),
                     Move = table.Column<int>(nullable: false),
+                    TimeOfDeath = table.Column<DateTime>(nullable: false),
                     LastAttackX = table.Column<int>(nullable: false),
                     LastAttackY = table.Column<int>(nullable: false),
                     PlayerId = table.Column<Guid>(nullable: true),

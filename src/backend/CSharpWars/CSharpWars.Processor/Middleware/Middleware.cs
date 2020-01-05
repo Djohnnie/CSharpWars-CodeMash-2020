@@ -11,7 +11,6 @@ namespace CSharpWars.Processor.Middleware
     {
         private readonly IArenaLogic _arenaLogic;
         private readonly IBotLogic _botLogic;
-        private readonly IMessageLogic _messageLogic;
         private readonly IPreprocessor _preprocessor;
         private readonly IProcessor _processor;
         private readonly IPostprocessor _postprocessor;
@@ -19,14 +18,12 @@ namespace CSharpWars.Processor.Middleware
         public Middleware(
             IArenaLogic arenaLogic,
             IBotLogic botLogic,
-            IMessageLogic messageLogic,
             IPreprocessor preprocessor,
             IProcessor processor,
             IPostprocessor postprocessor)
         {
             _arenaLogic = arenaLogic;
             _botLogic = botLogic;
-            _messageLogic = messageLogic;
             _preprocessor = preprocessor;
             _processor = processor;
             _postprocessor = postprocessor;

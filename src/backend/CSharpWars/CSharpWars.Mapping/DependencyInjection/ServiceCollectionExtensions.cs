@@ -12,7 +12,6 @@ namespace CSharpWars.Mapping.DependencyInjection
             services.AddSingleton<IMapper<Player, PlayerDto>, PlayerMapper>();
             services.AddSingleton<IMapper<Bot, BotDto>, BotMapper>();
             services.AddSingleton<IMapper<Bot, BotToCreateDto>, BotToCreateMapper>();
-            services.AddSingleton<IMapper<Message, MessageDto>, MessageMapper>();
         }
     }
 }
