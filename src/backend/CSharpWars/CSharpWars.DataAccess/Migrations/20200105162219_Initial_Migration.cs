@@ -14,8 +14,6 @@ namespace CSharpWars.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    Salt = table.Column<string>(nullable: true),
-                    Hashed = table.Column<string>(nullable: true),
                     LastDeployment = table.Column<DateTime>(nullable: false),
                     SysId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)

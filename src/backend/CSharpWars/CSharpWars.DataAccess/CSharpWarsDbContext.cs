@@ -17,6 +17,11 @@ namespace CSharpWars.DataAccess
 
         public DbSet<BotScript> BotScripts { get; set; }
 
+
+        public CSharpWarsDbContext()
+        {
+            
+        }
         
         public CSharpWarsDbContext(IConfigurationHelper configurationHelper)
         {
@@ -25,14 +30,16 @@ namespace CSharpWars.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (string.IsNullOrEmpty(_configurationHelper.ConnectionString))
-            {
-                optionsBuilder.UseInMemoryDatabase($"{Guid.NewGuid()}");
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer(_configurationHelper.ConnectionString);
-            }
+            //if (string.IsNullOrEmpty(_configurationHelper.ConnectionString))
+            //{
+            //    optionsBuilder.UseInMemoryDatabase($"{Guid.NewGuid()}");
+            //}
+            //else
+            //{
+            //    optionsBuilder.UseSqlServer(_configurationHelper.ConnectionString);
+            //}
+
+            optionsBuilder.UseSqlServer("Server=my.djohnnie.be;Database=CSharpWarsCodeMash;User Id=sa;Password=Pr0gN3T!;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,7 +47,7 @@ namespace CSharpWars.DataAccess
             modelBuilder.Entity<Player>(e =>
             {
                 e.ToTable("PLAYERS").HasKey(x => x.Id).ForSqlServerIsClustered(false);
-                e.Property<Int32>("SysId").UseSqlServerIdentityColumn();
+                e.Property<int>("SysId").UseSqlServerIdentityColumn();
                 e.HasIndex("SysId").ForSqlServerIsClustered();
                 e.Property(x => x.LastDeployment).IsRequired();
             });
@@ -48,7 +55,7 @@ namespace CSharpWars.DataAccess
             modelBuilder.Entity<Bot>(e =>
             {
                 e.ToTable("BOTS").HasKey(x => x.Id).ForSqlServerIsClustered(false);
-                e.Property<Int32>("SysId").UseSqlServerIdentityColumn();
+                e.Property<int>("SysId").UseSqlServerIdentityColumn();
                 e.HasIndex("SysId").ForSqlServerIsClustered();
             });
 

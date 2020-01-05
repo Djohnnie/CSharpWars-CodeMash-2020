@@ -17,8 +17,7 @@ namespace CSharpWars.Tests.Mapping
             var playerModel = new Player
             {
                 Id = Guid.NewGuid(),
-                Name = "PlayerName",
-                Hashed = "PlayerSecret"
+                Name = "PlayerName"
             };
 
             // Act

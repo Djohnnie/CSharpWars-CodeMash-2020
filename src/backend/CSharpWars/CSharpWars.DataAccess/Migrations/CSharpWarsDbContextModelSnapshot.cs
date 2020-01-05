@@ -88,13 +88,9 @@ namespace CSharpWars.DataAccess.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Hashed");
-
                     b.Property<DateTime>("LastDeployment");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("Salt");
 
                     b.Property<int>("SysId")
                         .ValueGeneratedOnAdd()

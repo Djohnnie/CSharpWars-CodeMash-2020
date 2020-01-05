@@ -234,7 +234,7 @@ namespace CSharpWars.Tests.Logic
             // Mock
             randomHelper.Setup(x => x.Get<PossibleOrientations>()).Returns(PossibleOrientations.South);
             botRepository.Setup(x => x.Find(Any.Predicate<Bot>(), i => i.Player)).ReturnsAsync(new List<Bot>());
-            randomHelper.Setup(x => x.Get(It.IsAny<Int32>())).Returns(5);
+            randomHelper.Setup(x => x.Get(It.IsAny<int>())).Returns(5);
             arenaLogic.Setup(x => x.GetArena()).ReturnsAsync(arenaDto);
             botScriptRepository.Setup(x => x.Create(It.IsAny<Bot>())).Returns<Bot>(Task.FromResult);
             playerRepository.Setup(x => x.Single(Any.Predicate<Player>())).ReturnsAsync(player);
@@ -310,7 +310,7 @@ namespace CSharpWars.Tests.Logic
             // Mock
             randomHelper.Setup(x => x.Get<PossibleOrientations>()).Returns(PossibleOrientations.South);
             botRepository.Setup(x => x.Find(Any.Predicate<Bot>(), i => i.Player)).ReturnsAsync(otherBots);
-            randomHelper.Setup(x => x.Get(It.IsAny<Int32>())).Returns(0);
+            randomHelper.Setup(x => x.Get(It.IsAny<int>())).Returns(0);
             arenaLogic.Setup(x => x.GetArena()).ReturnsAsync(arenaDto);
             botScriptRepository.Setup(x => x.Create(It.IsAny<Bot>())).Returns<Bot>(Task.FromResult);
             playerRepository.Setup(x => x.Single(Any.Predicate<Player>())).ReturnsAsync(player);

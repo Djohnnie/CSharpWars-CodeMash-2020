@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CSharpWars.DtoModel;
 
@@ -8,6 +9,6 @@ namespace CSharpWars.Logic.Interfaces
     {
         Task<IList<PlayerDto>> GetAllPlayers();
 
-        Task<PlayerDto> Login(LoginDto login);
+        Task<PlayerDto> CreatePlayer(string playerName);
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpWars.DataAccess.Migrations
 {
     [DbContext(typeof(CSharpWarsDbContext))]
-    [Migration("20200105153019_Initial_Migration")]
+    [Migration("20200105162219_Initial_Migration")]
     partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,13 +90,9 @@ namespace CSharpWars.DataAccess.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Hashed");
-
                     b.Property<DateTime>("LastDeployment");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("Salt");
 
                     b.Property<int>("SysId")
                         .ValueGeneratedOnAdd()
