@@ -43,12 +43,14 @@ namespace Assets.Scripts.Controllers
 
         void Update()
         {
-            if (BotIsNotAvailable())
+            // If the bot is not available.
+            if (_bot == null || _died)
             {
                 return;
             }
 
-            if (RobotIsConfused())
+            // If the robot is confused.
+            if (_bot.Move == PossibleMoves.ScriptError)
             {
                 RunAnimationOnce(Animations.Defend);
                 if (_errorGameObject == null)
@@ -91,7 +93,8 @@ namespace Assets.Scripts.Controllers
                 return;
             }
 
-            if (RobotHasDied())
+            // If the robot has died.
+            if (_bot.CurrentHealth <= 0 && _bot.Move != PossibleMoves.SelfDestruct)
             {
                 _died = true;
                 RunAnimationOnce(Animations.Death);
@@ -101,13 +104,15 @@ namespace Assets.Scripts.Controllers
                 return;
             }
 
-            if (RobotIsAttackingUsingMelee())
+            // If the robot performs a melee attack.
+            if (_bot.Move == PossibleMoves.MeleeAttack)
             {
                 RunAnimationOnce(Animations.MeleeAttack);
                 return;
             }
 
-            if (RobotIsAttackingUsingRanged())
+            // If the robot performs a ranged attack.
+            if (_bot.Move == PossibleMoves.RangedAttack)
             {
                 if (!_rangeAttackExecuted)
                 {
@@ -123,7 +128,8 @@ namespace Assets.Scripts.Controllers
                 return;
             }
 
-            if (RobotIsSelfDestructing())
+            // If the robot is self destructing.
+            if (_bot.Move == PossibleMoves.SelfDestruct)
             {
                 GetComponent<ExplosionController>().Explode();
                 RunAnimationOnce(Animations.Death);
@@ -204,41 +210,6 @@ namespace Assets.Scripts.Controllers
                 transform.eulerAngles = OrientationVector.CreateFrom(_bot.Orientation);
                 _lastAnimation = null;
             }
-        }
-
-        private bool BotIsNotAvailable()
-        {
-            return _bot == null || _died;
-        }
-
-        private bool RobotIsConfused()
-        {
-            return _bot.Move == PossibleMoves.ScriptError;
-        }
-
-        private bool RobotHasDied()
-        {
-            return _bot.CurrentHealth <= 0 && _bot.Move != PossibleMoves.SelfDestruct;
-        }
-
-        private bool RobotIsAttackingUsingMelee()
-        {
-            return _bot.Move == PossibleMoves.MeleeAttack;
-        }
-
-        private bool RobotIsAttackingUsingRanged()
-        {
-            return _bot.Move == PossibleMoves.RangedAttack;
-        }
-
-        private bool RobotIsSelfDestructing()
-        {
-            return _bot.Move == PossibleMoves.SelfDestruct;
-        }
-
-        private bool RobotIsTeleporting()
-        {
-            return _bot.Move == PossibleMoves.Teleport;
         }
 
         public void Destroy()
