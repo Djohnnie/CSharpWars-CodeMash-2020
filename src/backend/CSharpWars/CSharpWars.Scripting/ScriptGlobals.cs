@@ -202,7 +202,7 @@ namespace CSharpWars.Scripting
 
         #region <| Helper Methods |>
 
-        private Boolean SetCurrentMove(PossibleMoves currentMove)
+        private bool SetCurrentMove(PossibleMoves currentMove)
         {
             if (_50437079C366407D978Fe4Afd60C535F.CurrentMove == PossibleMoves.Idling)
             {

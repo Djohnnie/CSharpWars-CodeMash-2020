@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using CSharpWars.Common.Helpers.Interfaces;
 using CSharpWars.Enums;
 using CSharpWars.Processor.Middleware;
@@ -38,12 +37,5 @@ namespace CSharpWars.Processor.Moves
         }
 
         public abstract BotResult Go();
-
-        protected Boolean WillCollide(int x, int y)
-        {
-            var collidingEdge = x < 0 || x >= BotProperties.Width || y < 0 || y >= BotProperties.Height;
-            var collidingBot = BotProperties.Bots.FirstOrDefault(b => b.X == x && b.Y == y);
-            return collidingBot != null || collidingEdge;
-        }
     }
 }

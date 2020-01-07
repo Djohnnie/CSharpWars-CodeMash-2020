@@ -9,7 +9,7 @@ namespace CSharpWars.Tests.Common.Extensions
     {
         public class Data
         {
-            public Boolean BooleanProperty { get; set; }
+            public bool BooleanProperty { get; set; }
             public string StringProperty { get; set; }
             public int IntegerProperty { get; set; }
         }

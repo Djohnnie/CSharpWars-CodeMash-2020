@@ -1,4 +1,5 @@
-﻿using CSharpWars.Enums;
+﻿using System.Linq;
+using CSharpWars.Enums;
 using CSharpWars.Processor.Middleware;
 using CSharpWars.Scripting;
 using CSharpWars.Scripting.Model;
@@ -53,6 +54,13 @@ namespace CSharpWars.Processor.Moves
             }
 
             return botResult;
+        }
+
+        private bool WillCollide(int x, int y)
+        {
+            var collidingEdge = x < 0 || x >= BotProperties.Width || y < 0 || y >= BotProperties.Height;
+            var collidingBot = BotProperties.Bots.FirstOrDefault(b => b.X == x && b.Y == y);
+            return collidingBot != null || collidingEdge;
         }
     }
 }
