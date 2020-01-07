@@ -48,83 +48,27 @@ namespace CSharpWars.Logic
 
         public async Task<IList<BotDto>> GetAllActiveBots()
         {
-            var dateTimeToCompare = DateTime.UtcNow.AddSeconds(-10);
-
-            var activeBots = await _botRepository.Find(x => x.CurrentHealth > 0 || x.TimeOfDeath > dateTimeToCompare, i => i.Player);
-            return _botMapper.Map(activeBots);
+            throw new NotImplementedException();
         }
 
         public async Task<IList<BotDto>> GetAllLiveBots()
         {
-            var activeBots = await _botRepository.Find(x => x.CurrentHealth > 0, i => i.Player);
-            return _botMapper.Map(activeBots);
+            throw new NotImplementedException();
         }
 
         public async Task<string> GetBotScript(Guid botId)
         {
-            var botScript = await _scriptRepository.Single(x => x.Id == botId);
-            return botScript?.Script;
+            throw new NotImplementedException();
         }
 
         public async Task<BotDto> CreateBot(BotToCreateDto botToCreate)
         {
-            var bot = _botToCreateMapper.Map(botToCreate);
-            var arena = await _arenaLogic.GetArena();
-            var player = await _playerRepository.Single(x => x.Id == botToCreate.PlayerId);
-            
-            player.LastDeployment = DateTime.UtcNow;
-
-            bot.Player = player;
-            bot.Orientation = _randomHelper.Get<PossibleOrientations>();
-            var bots = await GetAllActiveBots();
-            var freeLocations = BuildFreeLocation(arena, bots);
-            var randomFreeLocation = freeLocations[_randomHelper.Get(freeLocations.Count)];
-            bot.X = randomFreeLocation.X;
-            bot.Y = randomFreeLocation.Y;
-            bot.FromX = bot.X;
-            bot.FromY = bot.Y;
-            bot.CurrentHealth = bot.MaximumHealth;
-            bot.CurrentStamina = bot.MaximumStamina;
-            bot.Memory = new Dictionary<string, string>().Serialize();
-            bot.TimeOfDeath = DateTime.MaxValue;
-
-            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                bot = await _botScriptRepository.Create(bot);
-                var botScript = await _scriptRepository.Single(x => x.Id == bot.Id);
-                botScript.Script = botToCreate.Script;
-                await _scriptRepository.Update(botScript);
-                await _playerRepository.Update(player);
-
-                transaction.Complete();
-            }
-
-            var createdBot = _botMapper.Map(bot);
-            return createdBot;
-        }
-
-        private IList<(int X, int Y)> BuildFreeLocation(ArenaDto arena, IList<BotDto> bots)
-        {
-            var freeLocations = new List<(int X, int Y)>();
-
-            for (int x = 0; x < arena.Width; x++)
-            {
-                for (int y = 0; y < arena.Height; y++)
-                {
-                    if (!bots.Any(b => b.X == x && b.Y == y))
-                    {
-                        freeLocations.Add((x, y));
-                    }
-                }
-            }
-
-            return freeLocations;
+            throw new NotImplementedException();
         }
 
         public async Task UpdateBots(IList<BotDto> bots)
         {
-            var botEntities = _botMapper.Map(bots);
-            await _botRepository.Update(botEntities);
+            throw new NotImplementedException();
         }
     }
 }

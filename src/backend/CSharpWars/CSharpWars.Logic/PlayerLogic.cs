@@ -22,20 +22,12 @@ namespace CSharpWars.Logic
 
         public async Task<IList<PlayerDto>> GetAllPlayers()
         {
-            var players = await _playerRepository.GetAll();
-            return _playerMapper.Map(players);
+            throw new NotImplementedException();
         }
 
         public async Task<PlayerDto> CreatePlayer(string playerName)
         {
-            var player = new Player
-            {
-                Name = playerName,
-                LastDeployment = DateTime.MinValue
-            };
-
-            var createdPlayer = await _playerRepository.Create(player);
-            return _playerMapper.Map(createdPlayer);
+            throw new NotImplementedException();
         }
     }
 }
