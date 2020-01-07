@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CSharpWars.Enums;
 using CSharpWars.Processor.Middleware;
 using CSharpWars.Scripting;
@@ -12,23 +13,7 @@ namespace CSharpWars.Processor.Moves
 
         public override BotResult Go()
         {
-            // Build result based on current properties.
-            var botResult = BotResult.Build(BotProperties);
-
-            var victimizedBot = FindVictimizedBot();
-            if (victimizedBot != null)
-            {
-                botResult.InflictDamage(victimizedBot.Id, Constants.RANGED_DAMAGE);
-            }
-
-            botResult.Move = PossibleMoves.RangedAttack;
-
-            return botResult;
-        }
-
-        private Bot FindVictimizedBot()
-        {
-            return BotProperties.Bots.FirstOrDefault(bot => bot.X == BotProperties.MoveDestinationX && bot.Y == BotProperties.MoveDestinationY);
+            throw new NotImplementedException();
         }
     }
 }

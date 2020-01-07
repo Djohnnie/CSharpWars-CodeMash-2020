@@ -1,4 +1,5 @@
-﻿using CSharpWars.Processor.Middleware;
+﻿using System;
+using CSharpWars.Processor.Middleware;
 using CSharpWars.Scripting.Model;
 
 namespace CSharpWars.Processor.Moves
@@ -9,12 +10,7 @@ namespace CSharpWars.Processor.Moves
 
         public override BotResult Go()
         {
-            // Build result based on current properties.
-            var botResult = BotResult.Build(BotProperties);
-
-            botResult.Move = BotProperties.CurrentMove;
-
-            return botResult;
+            throw new NotImplementedException();
         }
     }
 }

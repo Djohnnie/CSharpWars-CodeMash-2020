@@ -1,4 +1,5 @@
-﻿using CSharpWars.Enums;
+﻿using System;
+using CSharpWars.Enums;
 using CSharpWars.Processor.Middleware;
 using CSharpWars.Scripting.Model;
 
@@ -17,28 +18,7 @@ namespace CSharpWars.Processor.Moves
 
         public override BotResult Go()
         {
-            // Build result based on current properties.
-            var botResult = BotResult.Build(BotProperties);
-
-            botResult.Move = PossibleMoves.TurningRight;
-
-            switch (BotProperties.Orientation)
-            {
-                case PossibleOrientations.North:
-                    botResult.Orientation = PossibleOrientations.East;
-                    break;
-                case PossibleOrientations.East:
-                    botResult.Orientation = PossibleOrientations.South;
-                    break;
-                case PossibleOrientations.South:
-                    botResult.Orientation = PossibleOrientations.West;
-                    break;
-                case PossibleOrientations.West:
-                    botResult.Orientation = PossibleOrientations.North;
-                    break;
-            }
-
-            return botResult;
+            throw new NotImplementedException();
         }
     }
 }
