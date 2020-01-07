@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using CSharpWars.Processor.Middleware.Interfaces;
 
@@ -15,8 +16,7 @@ namespace CSharpWars.Processor.Middleware
 
         public async Task Go(ProcessingContext context)
         {
-            var botProcessing = context.Bots.Select(bot => _botProcessingFactory.Process(bot, context));
-            await Task.WhenAll(botProcessing);
+            throw new NotImplementedException();
         }
     }
 }
