@@ -315,7 +315,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 247836959}
-  - component: {fileID: 247836960}
   m_Layer: 0
   m_Name: _Camera
   m_TagString: Untagged
@@ -338,19 +337,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &247836960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247836958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96fca3bd277c70048b055b3376b56f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationsPerMinute: 1
 --- !u!1 &372734801
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,8 +394,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399541894}
-  - component: {fileID: 399541895}
-  - component: {fileID: 399541896}
   m_Layer: 0
   m_Name: _Arena
   m_TagString: Untagged
@@ -432,37 +416,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &399541895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399541893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8307e78e68301564f82de146bc91fd7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlatformHeight: 0.1
---- !u!114 &399541896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399541893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c33e085b89a3448a10df3d7dd742f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RefreshRate: 2
-  BotPrefab: {fileID: 7842690366862279663, guid: ffb0c1a0fa3145f41b55a52bf642993d,
-    type: 3}
-  NameTagPrefab: {fileID: 127760, guid: 80a8ca6bc44260a48a69a4ddde0ddbd9, type: 3}
-  HealthTagPrefab: {fileID: 136166, guid: 4251dc164ed905f4798da33fc320a199, type: 3}
-  StaminaTagPrefab: {fileID: 101522, guid: d8bb016a4d4f29e4ca2e6fa535778a82, type: 3}
 --- !u!1001 &492330520
 PrefabInstance:
   m_ObjectHideFlags: 0
