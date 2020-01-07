@@ -9,7 +9,6 @@ using CSharpWars.Common.Helpers.Interfaces;
 using CSharpWars.DataAccess.Repositories.Interfaces;
 using CSharpWars.DtoModel;
 using CSharpWars.Enums;
-using CSharpWars.Logic.Exceptions;
 using CSharpWars.Logic.Interfaces;
 using CSharpWars.Mapping.Interfaces;
 using CSharpWars.Model;
@@ -26,7 +25,6 @@ namespace CSharpWars.Logic
         private readonly IMapper<Bot, BotDto> _botMapper;
         private readonly IMapper<Bot, BotToCreateDto> _botToCreateMapper;
         private readonly IArenaLogic _arenaLogic;
-        private readonly IConfigurationHelper _configurationHelper;
 
         public BotLogic(
             IRandomHelper randomHelper,
@@ -36,8 +34,7 @@ namespace CSharpWars.Logic
             IRepository<Player> playerRepository,
             IMapper<Bot, BotDto> botMapper,
             IMapper<Bot, BotToCreateDto> botToCreateMapper,
-            IArenaLogic arenaLogic,
-            IConfigurationHelper configurationHelper)
+            IArenaLogic arenaLogic)
         {
             _randomHelper = randomHelper;
             _botRepository = botRepository;
@@ -47,7 +44,6 @@ namespace CSharpWars.Logic
             _botMapper = botMapper;
             _botToCreateMapper = botToCreateMapper;
             _arenaLogic = arenaLogic;
-            _configurationHelper = configurationHelper;
         }
 
         public async Task<IList<BotDto>> GetAllActiveBots()

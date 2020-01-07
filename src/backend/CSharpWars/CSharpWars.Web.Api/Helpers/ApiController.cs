@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CSharpWars.Logic.Exceptions;
 using CSharpWars.Logic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace CSharpWars.Web.Api.Helpers
 {
-    public class ApiController : ControllerBase
-    {
-        protected Task<IActionResult> Success()
-        {
-            return Task.FromResult((IActionResult)Ok());
-        }
-    }
-
-    public class ApiController<TLogic> : ApiController where TLogic : ILogic
+    public class ApiController<TLogic> : ControllerBase where TLogic : ILogic
     {
         private readonly TLogic _logic;
         private readonly IMemoryCache _memoryCache;
@@ -52,15 +43,6 @@ namespace CSharpWars.Web.Api.Helpers
             });
         }
 
-        protected async Task<IActionResult> Success(Func<TLogic, Task> logicCall)
-        {
-            return await Try(async () =>
-            {
-                await logicCall(_logic);
-                return Ok();
-            });
-        }
-
         protected async Task<IActionResult> Created<TResult>(Func<TLogic, Task<TResult>> logicCall)
         {
             return await Try(async () =>
@@ -76,7 +58,7 @@ namespace CSharpWars.Web.Api.Helpers
             {
                 return await action();
             }
-            catch (LogicException ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
