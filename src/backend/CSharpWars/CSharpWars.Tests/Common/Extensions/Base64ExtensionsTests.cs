@@ -1,5 +1,4 @@
-﻿using System;
-using CSharpWars.Common.Extensions;
+﻿using CSharpWars.Common.Extensions;
 using FluentAssertions;
 using Xunit;
 

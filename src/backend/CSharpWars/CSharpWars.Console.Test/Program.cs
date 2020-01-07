@@ -21,8 +21,6 @@ namespace CSharpWars.Console.Test
             {
                 c.ConnectionString = GetEnvironmentVariable("CONNECTION_STRING");
                 c.ArenaSize = ToInt32(GetEnvironmentVariable("ARENA_SIZE"));
-                c.ValidationHost = GetEnvironmentVariable("VALIDATION_HOST");
-                c.BotDeploymentLimit = ToInt32(GetEnvironmentVariable("BOT_DEPLOYMENT_LIMIT"));
             });
             services.ConfigureCommon();
             services.ConfigureLogic();
@@ -38,7 +36,7 @@ namespace CSharpWars.Console.Test
                 Name = $"{Guid.NewGuid()}",
                 MaximumHealth = 10000,
                 MaximumStamina = 10000,
-                Script = BotScripts.HuntDown.Base64Encode()
+                Script = BotScripts.WalkAround.Base64Encode()
             };
 
             var botLogic = provider.GetService<IBotLogic>();

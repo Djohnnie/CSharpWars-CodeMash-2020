@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using CSharpWars.DtoModel;
 using CSharpWars.Enums;
-using CSharpWars.Logging.Interfaces;
 using CSharpWars.Logic.Interfaces;
 using CSharpWars.Processor.Middleware.Interfaces;
 using CSharpWars.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
+using Microsoft.Extensions.Logging;
 
 namespace CSharpWars.Processor.Middleware
 {
@@ -15,12 +15,12 @@ namespace CSharpWars.Processor.Middleware
         private readonly IBotLogic _botLogic;
         private readonly IBotScriptCompiler _botScriptCompiler;
         private readonly IBotScriptCache _botScriptCache;
-        private readonly ILogger _logger;
+        private readonly ILogger<BotProcessingFactory> _logger;
 
         public BotProcessingFactory(
             IBotLogic botLogic,
             IBotScriptCompiler botScriptCompiler,
-            IBotScriptCache botScriptCache, ILogger logger)
+            IBotScriptCache botScriptCache, ILogger<BotProcessingFactory> logger)
         {
             _botLogic = botLogic;
             _botScriptCompiler = botScriptCompiler;
@@ -55,7 +55,7 @@ namespace CSharpWars.Processor.Middleware
                 }
                 catch (Exception ex)
                 {
-                    _logger.Log($"{ex}");
+                    _logger.LogError($"{ex}");
                 }
             }
 

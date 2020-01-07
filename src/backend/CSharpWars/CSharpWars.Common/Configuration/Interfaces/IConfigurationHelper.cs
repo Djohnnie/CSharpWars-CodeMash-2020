@@ -6,8 +6,5 @@ namespace CSharpWars.Common.Configuration.Interfaces
     {
         string ConnectionString { get; set; }
         int ArenaSize { get; set; }
-        string ValidationHost { get; set; }
-        int PointsLimit { get; set; }
-        int BotDeploymentLimit { get; set; }
     }
 }

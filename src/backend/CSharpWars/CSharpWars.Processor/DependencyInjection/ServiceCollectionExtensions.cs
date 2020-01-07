@@ -1,5 +1,4 @@
 ﻿using CSharpWars.Common.DependencyInjection;
-using CSharpWars.Logging.DependencyInjection;
 using CSharpWars.Logic.DependencyInjection;
 using CSharpWars.Processor.Middleware;
 using CSharpWars.Processor.Middleware.Interfaces;
@@ -12,7 +11,6 @@ namespace CSharpWars.Processor.DependencyInjection
         public static void ConfigureScriptProcessor(this IServiceCollection serviceCollection)
         {
             serviceCollection.ConfigureCommon();
-            serviceCollection.ConfigureLogging();
             serviceCollection.ConfigureLogic();
             serviceCollection.AddSingleton<IBotScriptCache, BotScriptCache>();
             serviceCollection.AddScoped<IMiddleware, Processor.Middleware.Middleware>();

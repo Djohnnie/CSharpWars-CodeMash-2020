@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using CSharpWars.Common.Extensions;
 using CSharpWars.DtoModel;
 using CSharpWars.Enums;
-using CSharpWars.Logging.Interfaces;
 using CSharpWars.Logic.Interfaces;
 using CSharpWars.Scripting.Model;
 using CSharpWars.Processor.Middleware;
 using CSharpWars.Processor.Middleware.Interfaces;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -24,7 +24,7 @@ namespace CSharpWars.Tests.Scripting.Middleware
             var botLogic = new Mock<IBotLogic>();
             var botScriptCompiler = new Mock<IBotScriptCompiler>();
             var botScriptCache = new Mock<IBotScriptCache>();
-            var logger = new Mock<ILogger>();
+            var logger = new Mock<ILogger<BotProcessingFactory>>();
             var botProcessingFactory = new BotProcessingFactory(
                 botLogic.Object, botScriptCompiler.Object, botScriptCache.Object, logger.Object);
             var arena = new ArenaDto { Width = 4, Height = 3 };
@@ -47,7 +47,7 @@ namespace CSharpWars.Tests.Scripting.Middleware
             var botLogic = new Mock<IBotLogic>();
             var botScriptCompiler = new BotScriptCompiler();
             var botScriptCache = new BotScriptCache();
-            var logger = new Mock<ILogger>();
+            var logger = new Mock<ILogger<BotProcessingFactory>>();
             var botProcessingFactory = new BotProcessingFactory(
                 botLogic.Object, botScriptCompiler, botScriptCache, logger.Object);
             var arena = new ArenaDto { Width = 4, Height = 3 };
